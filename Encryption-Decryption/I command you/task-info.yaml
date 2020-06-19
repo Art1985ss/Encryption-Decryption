@@ -1,0 +1,102 @@
+type: edu
+custom_name: stage4
+files:
+- name: test/EncryptDecryptTest.java
+  visible: false
+  text: |
+    import encryptdecrypt.Main;
+    import org.hyperskill.hstest.stage.StageTest;
+    import org.hyperskill.hstest.testcase.CheckResult;
+    import org.hyperskill.hstest.testcase.TestCase;
+
+    import java.util.List;
+
+    public class EncryptDecryptTest extends StageTest<String> {
+        public EncryptDecryptTest() {
+            super(Main.class);
+        }
+
+        @Override
+        public List<TestCase<String>> generate() {
+            return List.of(
+                new TestCase<String>()
+                    .addArguments(
+                        "-mode", "enc",
+                        "-key", "5",
+                        "-data", "Welcome to hyperskill!"
+                    )
+                    .setAttach("\\jqhtrj%yt%m~ujwxpnqq&"),
+
+                new TestCase<String>()
+                    .addArguments(
+                        "-key", "0",
+                        "-mode", "enc",
+                        "-data", "Hello"
+                    )
+                    .setAttach("Hello"),
+
+                new TestCase<String>()
+                    .addArguments(
+                        "-key", "1",
+                        "-data", "012345678",
+                        "-mode", "enc"
+                    )
+                    .setAttach("123456789"),
+
+                new TestCase<String>()
+                    .addArguments(
+                        "-mode", "dec",
+                        "-data", "\\jqhtrj%yt%m~ujwxpnqq&",
+                        "-key", "5"
+                    )
+                    .setAttach("Welcome to hyperskill!"),
+
+                new TestCase<String>()
+                    .addArguments(
+                        "-mode", "dec",
+                        "-key", "0",
+                        "-data", "Hi"
+                    )
+                    .setAttach("Hi"),
+
+                new TestCase<String>()
+                    .addArguments(
+                        "-mode", "dec",
+                        "-key", "1",
+                        "-data", "222233334444"
+                    )
+                    .setAttach("111122223333")
+            );
+        }
+
+        @Override
+        public CheckResult check(String reply, String clue) {
+            return new CheckResult(reply.trim().equals(clue.trim()));
+        }
+    }
+  learner_created: false
+- name: src/encryptdecrypt/Main.java
+  visible: true
+  text: "package encryptdecrypt;\n\nimport java.util.Scanner;\n\npublic class Main\
+    \ {\n\n    public static void main(String[] args) {\n        Scanner sc = new\
+    \ Scanner(System.in);\n        String instruction = sc.nextLine();\n        String\
+    \ str = sc.nextLine();\n        int key = sc.nextInt();\n        System.out.println(encryption(instruction,\
+    \ str, key));\n    }\n\n    public static String[] getArguments(String[] args)\
+    \ {\n        for (int i = 0; i < args.length; i++) {\n            \n        }\n\
+    \    }\n\n    public static String encryption(String instruction, String str,\
+    \ int key) {\n        switch (instruction) {\n            case \"enc\":\n    \
+    \            return encrypt(str, key);\n            case \"dec\":\n          \
+    \      return decrypt(str, key);\n            default:\n                return\
+    \ str;\n        }\n    }\n\n    private static String encrypt(String input, int\
+    \ key) {\n        StringBuilder stringBuilder = new StringBuilder();\n       \
+    \ for (int i = 0; i < input.length(); i++) {\n            char ch = input.charAt(i);\n\
+    \            ch += key;\n            stringBuilder.append(ch);\n        }\n  \
+    \      return stringBuilder.toString();\n    }\n\n    private static String decrypt(String\
+    \ str, int key) {\n        StringBuilder stringBuilder = new StringBuilder();\n\
+    \        for (int i = 0; i < str.length(); i++) {\n            char ch = str.charAt(i);\n\
+    \            ch -= key;\n            stringBuilder.append(ch);\n        }\n  \
+    \      return stringBuilder.toString();\n    }\n}\n"
+  learner_created: true
+feedback_link: https://hyperskill.org/projects/46/stages/248/implement
+status: Solved
+record: 4
