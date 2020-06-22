@@ -189,7 +189,16 @@ files:
   visible: true
   text: 111122223333
   learner_created: true
+- name: src/encryptdecrypt/EncryptionService.java
+  visible: true
+  learner_created: true
 - name: src/encryptdecrypt/Encryption.java
+  visible: true
+  learner_created: true
+- name: src/encryptdecrypt/UnicodeEncryption.java
+  visible: true
+  learner_created: true
+- name: src/encryptdecrypt/ShiftEncryption.java
   visible: true
   text: |+
     package encryptdecrypt;
@@ -300,5 +309,5 @@ files:
 
   learner_created: true
 feedback_link: https://hyperskill.org/projects/46/stages/250/implement
-status: Unchecked
+status: Solved
 record: -1

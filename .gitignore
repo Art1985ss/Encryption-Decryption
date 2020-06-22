@@ -1,4 +1,5 @@
 # Project exclude paths
+.idea
 /.gradle/
 /Encryption-Decryption/task/build/
 /Encryption-Decryption/task/out/
